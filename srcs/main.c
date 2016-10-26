@@ -6,7 +6,7 @@
 /*   By: gpoblon <gpoblon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/11 18:01:06 by gpoblon           #+#    #+#             */
-/*   Updated: 2016/10/26 20:55:49 by gpoblon          ###   ########.fr       */
+/*   Updated: 2016/10/26 21:58:05 by gpoblon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,12 @@ int		main(int argc, char **argv)
 	map_size = (tetri[0].height > tetri[0].width) ? tetri[0].height :
 				tetri[0].width;
 	ft_init_map(map);
-	ft_putnbr(tetri[1].tetri_coord[1].y);
-	ft_putnbr(tetri[1].tetri_coord[1].x);
-	ft_putchar('\n');
-	// ft_putnbr(tetri->height);
-	// ft_putchar('\n');
-	// ft_putnbr(tetri->tetri_coord[i].y);
-	// ft_putchar('\n');
-	// ft_putnbr(tetri->pos.y);
-	// ft_putchar('\n');
-	// ft_putnbr(tetri->tetri_coord[i].x);
-	// ft_putchar('\n');
-	// ft_putnbr(tetri->pos.x);
-	// ft_putchar('\n');
-	while (!ft_solver(map, &tetri[1], map_size))
+	while (!ft_solver(map, &tetri[0], map_size))
 	{
 		ft_init_map(map);
-		++map_size;
+		map_size++;
 	}
 	ft_print_map(map, map_size);
-	free(tetri);
 	return (0);
 }
 
