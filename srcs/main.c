@@ -6,7 +6,7 @@
 /*   By: gpoblon <gpoblon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/11 18:01:06 by gpoblon           #+#    #+#             */
-/*   Updated: 2016/10/26 21:58:05 by gpoblon          ###   ########.fr       */
+/*   Updated: 2016/10/27 03:36:35 by gpoblon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,15 @@ int		main(int argc, char **argv)
 
 	if (argc != 2)
 		ft_exit("number of arg error");
-	count = (t_input *)malloc(sizeof(t_input));
-	CHECKPV0(count)
+	count = ft_memalloc(sizeof(t_input));
 	s_input = ft_input_to_str(argv[1], count);
 	tmp_tdesc_count = 0;
-	tetri = (t_data *)malloc(sizeof(t_data) * count->tdesc_count);
+	tetri = ft_memalloc(sizeof(t_data) * count->tdesc_count);
 	while (tmp_tdesc_count < count->tdesc_count - 1)
 	{
 		ft_set_tetri(&tetri[tmp_tdesc_count], tmp_tdesc_count, count, s_input);
 		++tmp_tdesc_count;
 	}
-	free(s_input);
-	free(count);
 	map_size = (tetri[0].height > tetri[0].width) ? tetri[0].height :
 				tetri[0].width;
 	ft_init_map(map);
@@ -44,6 +41,9 @@ int		main(int argc, char **argv)
 		map_size++;
 	}
 	ft_print_map(map, map_size);
+	free(s_input);
+	free(count);
+	free(tetri);
 	return (0);
 }
 
