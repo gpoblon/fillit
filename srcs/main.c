@@ -6,7 +6,7 @@
 /*   By: gpoblon <gpoblon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/11 18:01:06 by gpoblon           #+#    #+#             */
-/*   Updated: 2016/10/27 03:36:35 by gpoblon          ###   ########.fr       */
+/*   Updated: 2016/10/27 15:21:31 by gpoblon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		main(int argc, char **argv)
 	size_t	tmp_tdesc_count;
 	char	*s_input;
 	char	map[MAX_SQUARE * MAX_SQUARE];
-	size_t	map_size;
+	int		map_size;
 
 	if (argc != 2)
 		ft_exit("number of arg error");
@@ -38,7 +38,7 @@ int		main(int argc, char **argv)
 	while (!ft_solver(map, &tetri[0], map_size))
 	{
 		ft_init_map(map);
-		map_size++;
+		++map_size;
 	}
 	ft_print_map(map, map_size);
 	free(s_input);

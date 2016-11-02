@@ -6,7 +6,7 @@
 /*   By: gpoblon <gpoblon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 23:24:22 by gpoblon           #+#    #+#             */
-/*   Updated: 2016/10/26 20:43:32 by gpoblon          ###   ########.fr       */
+/*   Updated: 2016/10/27 15:23:57 by gpoblon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ void	ft_set_tetri(t_data *tetri, size_t tmp_tdesc_count, t_input *count, char *s
 	tetri->id = 'A' + tmp_tdesc_count;
 	str_tdesc = ft_check_str_tdesc(s_input, count);
 	ft_set_tetri_coord(str_tdesc, tetri);
-	while (i < TDESC_SIZE)
+	while (str_tdesc[i])
 	{
 		if (str_tdesc[i] == '#')
 		{
 			tetri->tetri_coord[j].x = (i % 5) - tetri->min.x;
 			tetri->tetri_coord[j].y = (i / 5) - tetri->min.y;
-			j++;
+			++j;
 		}
-		i++;
+		++i;
 	}
 	tetri->height = (tetri->max.y - tetri->min.y) + 1;
 	tetri->width = (tetri->max.x - tetri->min.x) + 1;
@@ -60,7 +60,7 @@ char	*ft_check_str_tdesc(char *s_input, t_input *count)
 
 void	ft_set_tetri_coord(char *str_tdesc, t_data *tetri)
 {
-	size_t	i;
+	int		i;
 
 	tetri->min.x = 3;
 	tetri->min.y = 3;

@@ -6,7 +6,7 @@
 /*   By: gpoblon <gpoblon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/15 12:51:58 by gpoblon           #+#    #+#             */
-/*   Updated: 2016/10/26 21:32:26 by gpoblon          ###   ########.fr       */
+/*   Updated: 2016/10/27 15:21:08 by gpoblon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void		ft_init_map(char *map)
 	}
 }
 
-void	ft_print_map(char *map, size_t map_size)
+void	ft_print_map(char *map, int map_size)
 {
-	size_t	i;
-	size_t	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (i < map_size)

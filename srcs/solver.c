@@ -6,15 +6,14 @@
 /*   By: gpoblon <gpoblon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/21 10:28:30 by gpoblon           #+#    #+#             */
-/*   Updated: 2016/10/27 03:19:34 by gpoblon          ###   ########.fr       */
+/*   Updated: 2016/10/27 15:21:57 by gpoblon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_solver(char *map, t_data *tetri, size_t map_size)
+int		ft_solver(char *map, t_data *tetri, int map_size)
 {
-	size_t	i;
 	if (tetri->id == 0)
 		return (1);
 
@@ -29,12 +28,7 @@ int		ft_solver(char *map, t_data *tetri, size_t map_size)
 				ft_set_tetri_map(map, tetri);
 				if (ft_solver(map, tetri + 1, map_size))
 					return (1);
-				i = 0;
-				while (i < 4)
-				{
-					map[(tetri->tetri_coord[i].y + tetri->pos.y) * MAX_SQUARE + tetri->tetri_coord[i].x + tetri->pos.x] = '.';
-					i++;
-				}
+				ft_delete_tetri(map, tetri);
 			}
 			tetri->pos.x++;
 		}
@@ -43,6 +37,17 @@ int		ft_solver(char *map, t_data *tetri, size_t map_size)
 	return (0);
 }
 
+void		ft_delete_tetri(char *map, t_data *tetri)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		map[(tetri->tetri_coord[i].y + tetri->pos.y) * MAX_SQUARE + tetri->tetri_coord[i].x + tetri->pos.x] = '.';
+		i++;
+	}
+}
 
 void	ft_set_tetri_map(char *map, t_data *tetri)
 {
