@@ -6,18 +6,18 @@
 /*   By: gpoblon <gpoblon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 21:13:34 by gpoblon           #+#    #+#             */
-/*   Updated: 2016/10/27 15:23:05 by gpoblon          ###   ########.fr       */
+/*   Updated: 2016/11/05 15:07:49 by gpoblon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-#include "libft.h"
+# include "libft.h"
 
-# define		TDESC_SIZE 20
-# define		MAX_TETRIS 26
-# define		MAX_SQUARE 16
+# define TDESC_SIZE 20
+# define MAX_TETRIS 26
+# define MAX_SQUARE 16
 
 typedef struct	s_input_check
 {
@@ -43,12 +43,16 @@ typedef struct	s_tetri_data
 	int			height;
 }				t_data;
 
+void			ft_main_solver(t_input *count, char *s_input);
+
 char			*ft_input_to_str(char *filename, t_input *count);
 char			*ft_get_str(char *filename, t_input *count);
 
-void			ft_set_tetri(t_data *tetri, size_t tmp_tdesc_count, t_input *count, char *s_input);
+void			ft_set_tetri(t_data *tetri, size_t tmp_tdesc_count,
+							t_input *count, char *s_input);
 char			*ft_check_str_tdesc(char *s_input, t_input *count);
 void			ft_check_grid_valid(char *str);
+void			ft_check_buf_size(t_input *count);
 void			ft_check_connect(char *str);
 void			ft_set_tetri_coord(char *str_tdesc, t_data *tetri);
 
@@ -58,6 +62,5 @@ void			ft_set_tetri_map(char *map, t_data *tetri);
 void			ft_delete_tetri(char *map, t_data *tetri);
 void			ft_print_map(char *map, int map_size);
 int				ft_valid_pos(char *map, t_data *tetri);
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: gpoblon <gpoblon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/21 10:28:30 by gpoblon           #+#    #+#             */
-/*   Updated: 2016/10/27 15:21:57 by gpoblon          ###   ########.fr       */
+/*   Updated: 2016/11/05 13:18:52 by gpoblon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int		ft_solver(char *map, t_data *tetri, int map_size)
 {
 	if (tetri->id == 0)
 		return (1);
-
 	tetri->pos.y = 0;
 	while (tetri->pos.y <= map_size - tetri->height)
 	{
@@ -37,14 +36,15 @@ int		ft_solver(char *map, t_data *tetri, int map_size)
 	return (0);
 }
 
-void		ft_delete_tetri(char *map, t_data *tetri)
+void	ft_delete_tetri(char *map, t_data *tetri)
 {
 	size_t	i;
 
 	i = 0;
 	while (i < 4)
 	{
-		map[(tetri->tetri_coord[i].y + tetri->pos.y) * MAX_SQUARE + tetri->tetri_coord[i].x + tetri->pos.x] = '.';
+		map[(tetri->tetri_coord[i].y + tetri->pos.y) * MAX_SQUARE +
+		tetri->tetri_coord[i].x + tetri->pos.x] = '.';
 		i++;
 	}
 }
@@ -56,7 +56,8 @@ void	ft_set_tetri_map(char *map, t_data *tetri)
 	i = 0;
 	while (i < 4)
 	{
-		map[(tetri->tetri_coord[i].y + tetri->pos.y) * MAX_SQUARE + tetri->tetri_coord[i].x + tetri->pos.x] = tetri->id;
+		map[(tetri->tetri_coord[i].y + tetri->pos.y) * MAX_SQUARE +
+		tetri->tetri_coord[i].x + tetri->pos.x] = tetri->id;
 		i++;
 	}
 }
@@ -68,7 +69,8 @@ int		ft_valid_pos(char *map, t_data *tetri)
 	i = 0;
 	while (i < 4)
 	{
-		if (map[(tetri->tetri_coord[i].y + tetri->pos.y) * MAX_SQUARE + tetri->tetri_coord[i].x + tetri->pos.x] != '.')
+		if (map[(tetri->tetri_coord[i].y + tetri->pos.y) * MAX_SQUARE +
+		tetri->tetri_coord[i].x + tetri->pos.x] != '.')
 			return (0);
 		i++;
 	}

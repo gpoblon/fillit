@@ -6,13 +6,14 @@
 /*   By: gpoblon <gpoblon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 23:24:22 by gpoblon           #+#    #+#             */
-/*   Updated: 2016/10/27 15:23:57 by gpoblon          ###   ########.fr       */
+/*   Updated: 2016/11/05 14:22:13 by gpoblon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_set_tetri(t_data *tetri, size_t tmp_tdesc_count, t_input *count, char *s_input)
+void	ft_set_tetri(t_data *tetri, size_t tmp_tdesc_count, t_input *count,
+					char *s_input)
 {
 	char	*str_tdesc;
 	size_t	i;
@@ -66,7 +67,6 @@ void	ft_set_tetri_coord(char *str_tdesc, t_data *tetri)
 	tetri->min.y = 3;
 	tetri->max.x = 0;
 	tetri->max.y = 0;
-
 	i = 0;
 	while (str_tdesc[i])
 	{

@@ -6,13 +6,13 @@
 /*   By: gpoblon <gpoblon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/15 12:51:58 by gpoblon           #+#    #+#             */
-/*   Updated: 2016/10/27 15:21:08 by gpoblon          ###   ########.fr       */
+/*   Updated: 2016/11/05 13:16:55 by gpoblon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void		ft_init_map(char *map)
+void	ft_init_map(char *map)
 {
 	size_t	i;
 	size_t	j;

@@ -6,7 +6,7 @@
 /*   By: gpoblon <gpoblon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/11 11:46:08 by gpoblon           #+#    #+#             */
-/*   Updated: 2016/10/25 13:47:24 by gpoblon          ###   ########.fr       */
+/*   Updated: 2016/11/05 14:54:39 by gpoblon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,22 @@ void	ft_check_grid_valid(char *str)
 		else if (str[i] == '\n' && (i == 4 || i == 9 || i == 14 || i == 19))
 			++newline_c;
 		else
-			ft_exit("error, invalid bloc composition.");
+			ft_exit("error");
 		++i;
 	}
 	if (!(pound_c == 4 && period_c == 12 && newline_c == 4))
-		ft_exit("error, invalid bloc composition 2.");
+		ft_exit("error");
+}
+
+void	ft_check_buf_size(t_input *count)
+{
+	size_t	n;
+
+	n = 1;
+	while (count->buf_size > 20 * n + n - 1)
+		n++;
+	if (count->buf_size != 20 * n + n - 1)
+		ft_exit("error");
 }
 
 void	ft_check_connect(char *str)
@@ -62,5 +73,5 @@ void	ft_check_connect(char *str)
 		i++;
 	}
 	if (!(block == 6 || block == 8))
-		ft_exit("error blocks connection");
+		ft_exit("error");
 }

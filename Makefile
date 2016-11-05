@@ -12,32 +12,35 @@ OBJS	= $(addprefix $(OBJS_D),$(SRCS:.c=.o))
 CC		= gcc
 C_FLAGS = -Wall -Werror -Wextra
 
-LIBFT	= ./libft/libft.a
 LIBINC	= -I./libft
 LIBLINK	= -L./libft -lft
 
 SRCS_D	= ./srcs/
-INC_D	= ./includes/
+INC_D	= -I./includes/
 OBJS_D	= ./objs/
 
-all:	obj libft $(NAME)
+all:	$(NAME)
 
 obj:
 		mkdir -p $(OBJS_D)
 
-libft:
-		make re ./libft
+lft:
+		make -C ./libft
 
 $(OBJS_D)%.o:$(SRCS_D)%.c
-		$(CC) $(C_FLAGS) $(LIBINC) -I$(INC_D) -o $@ -c $<
+		$(CC) $(C_FLAGS) $(LIBINC) $(INC_D) -o $@ -c $<
 
-$(NAME): $(OBJS)
-		$(CC) $(C_FLAGS) $(LIBLINK) -o $(NAME) $(OBJS) $(LIBFT)
+$(NAME): obj $(OBJS) lft
+		$(CC) $(C_FLAGS) $(LIBLINK) -o $(NAME) $(OBJS)
 
 clean:
 		rm -rf $(OBJS_D)
+		make -C ./libft clean
 
 fclean: clean
 		rm -rf $(NAME)
+		make -C ./libft fclean
 
 re:		fclean all
+
+.PHONY: clean
