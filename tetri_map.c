@@ -6,11 +6,22 @@
 /*   By: gpoblon <gpoblon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/15 12:51:58 by gpoblon           #+#    #+#             */
-/*   Updated: 2016/11/05 13:16:55 by gpoblon          ###   ########.fr       */
+/*   Updated: 2016/11/06 16:50:52 by gpoblon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+int		ft_fsqrt(t_input *count)
+{
+	int	n;
+
+	n = 1;
+	while (n * n < 4 * (int)count->tdesc_count)
+		++n;
+	--n;
+	return (n + 1);
+}
 
 void	ft_init_map(char *map)
 {

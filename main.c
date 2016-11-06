@@ -6,7 +6,7 @@
 /*   By: gpoblon <gpoblon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/11 18:01:06 by gpoblon           #+#    #+#             */
-/*   Updated: 2016/11/05 15:08:05 by gpoblon          ###   ########.fr       */
+/*   Updated: 2016/11/06 16:50:28 by gpoblon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ void	ft_main_solver(t_input *count, char *s_input)
 		ft_set_tetri(&tetri[tmp_tdesc_count], tmp_tdesc_count, count, s_input);
 		++tmp_tdesc_count;
 	}
-	map_size = (tetri[0].height > tetri[0].width) ? tetri[0].height :
-				tetri[0].width;
+	map_size = ft_fsqrt(count);
 	ft_init_map(map);
 	while (!ft_solver(map, &tetri[0], map_size))
 	{

@@ -1,43 +1,30 @@
 NAME	=	fillit
 
-SRCS	=	main.c \
-			input_to_tab.c \
+SRC		=	main.c \
 			check_input.c \
 			get_tetri_coord.c \
+			input_to_tab.c \
 			tetri_map.c \
-			solver.c \
+			solver.c
 
-OBJS	= $(addprefix $(OBJS_D),$(SRCS:.c=.o))
+OBJ		=	$(SRC:.c=.o)
 
-CC		= gcc
-C_FLAGS = -Wall -Werror -Wextra
+CC		=	gcc -Wall -Wextra -Werror
 
-LIBINC	= -I./libft
+LIBFT	= ./libft/libft.a
 LIBLINK	= -L./libft -lft
 
-SRCS_D	= ./srcs/
-INC_D	= -I./includes/
-OBJS_D	= ./objs/
+all: $(NAME)
 
-all:	$(NAME)
-
-obj:
-		mkdir -p $(OBJS_D)
-
-lft:
+$(NAME): $(OBJ)
 		make -C ./libft
-
-$(OBJS_D)%.o:$(SRCS_D)%.c
-		$(CC) $(C_FLAGS) $(LIBINC) $(INC_D) -o $@ -c $<
-
-$(NAME): obj $(OBJS) lft
-		$(CC) $(C_FLAGS) $(LIBLINK) -o $(NAME) $(OBJS)
+		gcc $(LIBLINK) -o $(NAME) $(OBJ)
 
 clean:
-		rm -rf $(OBJS_D)
+		rm -rf $(OBJ)
 		make -C ./libft clean
 
-fclean: clean
+fclean:	clean
 		rm -rf $(NAME)
 		make -C ./libft fclean
 

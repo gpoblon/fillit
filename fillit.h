@@ -6,14 +6,14 @@
 /*   By: gpoblon <gpoblon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 21:13:34 by gpoblon           #+#    #+#             */
-/*   Updated: 2016/11/05 15:07:49 by gpoblon          ###   ########.fr       */
+/*   Updated: 2016/11/06 16:52:57 by gpoblon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-# include "libft.h"
+# include "./libft/libft.h"
 
 # define TDESC_SIZE 20
 # define MAX_TETRIS 26
@@ -56,6 +56,7 @@ void			ft_check_buf_size(t_input *count);
 void			ft_check_connect(char *str);
 void			ft_set_tetri_coord(char *str_tdesc, t_data *tetri);
 
+int				ft_fsqrt(t_input *count);
 void			ft_init_map(char *map);
 int				ft_solver(char *map, t_data *tetri, int map_size);
 void			ft_set_tetri_map(char *map, t_data *tetri);
