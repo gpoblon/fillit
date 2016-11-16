@@ -1,42 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tetri_map.c                                        :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpoblon <gpoblon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/15 12:51:58 by gpoblon           #+#    #+#             */
-/*   Updated: 2016/11/06 16:50:52 by gpoblon          ###   ########.fr       */
+/*   Updated: 2016/11/16 15:52:22 by gpoblon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_fsqrt(t_input *count)
+int		ft_fsqrt(size_t tdesc_count)
 {
-	int	n;
+	size_t	n;
 
 	n = 1;
-	while (n * n < 4 * (int)count->tdesc_count)
+	while (n * n < 4 * tdesc_count)
 		++n;
-	--n;
-	return (n + 1);
+	return (n);
 }
 
 void	ft_init_map(char *map)
 {
 	size_t	i;
-	size_t	j;
 
 	i = 0;
-	while (i < MAX_SQUARE)
+	while (i < MAX_SQUARE * MAX_SQUARE)
 	{
-		j = 0;
-		while (j < MAX_SQUARE)
-		{
-			map[(i * MAX_SQUARE) + j] = '.';
-			j++;
-		}
+		map[i] = '.';
 		i++;
 	}
 }

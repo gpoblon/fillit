@@ -1,10 +1,10 @@
 NAME	=	fillit
 
 SRC		=	main.c \
-			check_input.c \
-			get_tetri_coord.c \
-			input_to_tab.c \
-			tetri_map.c \
+			reader.c \
+			check.c \
+			tetri.c \
+			map.c \
 			solver.c
 
 OBJ		=	$(SRC:.c=.o)

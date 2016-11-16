@@ -6,7 +6,7 @@
 /*   By: gpoblon <gpoblon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 21:13:34 by gpoblon           #+#    #+#             */
-/*   Updated: 2016/11/06 16:52:57 by gpoblon          ###   ########.fr       */
+/*   Updated: 2016/11/16 15:15:36 by gpoblon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,53 +15,43 @@
 
 # include "./libft/libft.h"
 
-# define TDESC_SIZE 20
-# define MAX_TETRIS 26
 # define MAX_SQUARE 16
+# define BUFF_SIZE	21
 
-typedef struct	s_input_check
+typedef struct		s_tetri_coord
 {
-	float		tdesc_count;
-	size_t		buf_size;
-	size_t		buf_count;
-}				t_input;
+	int				x;
+	int				y;
+}					t_coord;
 
-typedef struct	s_tetri_coord
+typedef struct		s_tetri
 {
-	int			x;
-	int			y;
-}				t_coord;
+	char			id;
+	t_coord			min;
+	t_coord			max;
+	t_coord			tetri_coord[4];
+	t_coord			pos;
+	int				width;
+	int				height;
+	struct s_tetri	*next;
+}					t_tetri;
 
-typedef struct	s_tetri_data
-{
-	char		id;
-	t_coord		min;
-	t_coord		max;
-	t_coord		tetri_coord[4];
-	t_coord		pos;
-	int			width;
-	int			height;
-}				t_data;
-
-void			ft_main_solver(t_input *count, char *s_input);
-
-char			*ft_input_to_str(char *filename, t_input *count);
-char			*ft_get_str(char *filename, t_input *count);
-
-void			ft_set_tetri(t_data *tetri, size_t tmp_tdesc_count,
-							t_input *count, char *s_input);
-char			*ft_check_str_tdesc(char *s_input, t_input *count);
-void			ft_check_grid_valid(char *str);
-void			ft_check_buf_size(t_input *count);
-void			ft_check_connect(char *str);
-void			ft_set_tetri_coord(char *str_tdesc, t_data *tetri);
-
-int				ft_fsqrt(t_input *count);
-void			ft_init_map(char *map);
-int				ft_solver(char *map, t_data *tetri, int map_size);
-void			ft_set_tetri_map(char *map, t_data *tetri);
-void			ft_delete_tetri(char *map, t_data *tetri);
-void			ft_print_map(char *map, int map_size);
-int				ft_valid_pos(char *map, t_data *tetri);
+size_t				ft_get_tetri(char *filename, t_tetri **tetri,
+					size_t tdesc_count);
+int					ft_read_fd(int fd, char *buffer);
+size_t				ft_check_grid_valid(char *buffer);
+void				ft_check_connect(char *buffer);
+void				ft_set_tetri(t_tetri **bgn_tetri, char *buffer,
+					size_t tdesc_count);
+t_tetri				*ft_new_tetri(void);
+void				ft_set_tetri_coord(char *buffer, t_tetri *tetri);
+void				ft_push_back_tetri(t_tetri **bgn_tetri, t_tetri *tetri);
+int					ft_fsqrt(size_t tdesc_count);
+void				ft_init_map(char *map);
+int					ft_solver(char *map, t_tetri *tetri, int map_size);
+int					ft_valid_pos(char *map, t_tetri *tetri);
+void				ft_set_tetri_map(char *map, t_tetri *tetri);
+void				ft_delete_tetri(char *map, t_tetri *tetri);
+void				ft_print_map(char *map, int map_size);
 
 #endif
